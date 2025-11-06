@@ -1,0 +1,36 @@
+services:
+  quant_api:
+    image: xiz001/quant_api:latest
+    container_name: quant_api
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - project-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  quant_ui:
+    image: xiz001/quant_ui:latest
+    container_name: quant_ui
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - quant_api
+    networks:
+      - project-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  project-net:
+    name: project-net
