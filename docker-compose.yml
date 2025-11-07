@@ -31,6 +31,23 @@ services:
       retries: 3
       start_period: 30s
 
+  quant_data:
+    image: ./quant_data
+    container_name: quant_data
+    restart: always
+    depends_on:
+      - quant_api
+    networks:
+      - project-net
+    volumes:
+      - ./quant_data/scripts:/app/scripts
+    healthcheck:
+      test: ["CMD", "python", "-c", "print('ok')"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+      
 networks:
   project-net:
     name: project-net
