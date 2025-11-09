@@ -48,6 +48,15 @@ services:
       retries: 3
       start_period: 30s
       
+  keycloak:
+    image: xiz001/quant_keycloak:latest
+    container_name: quant_keycloak
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - project-net
+      
 networks:
   project-net:
     name: project-net
