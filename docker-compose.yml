@@ -49,7 +49,7 @@ services:
       start_period: 30s
       
   keycloak:
-    image: xiz001/quant_keycloak:acaaf73
+    image: xiz001/quant_keycloak:009d136
     container_name: quant_keycloak
     restart: always
     ports:
