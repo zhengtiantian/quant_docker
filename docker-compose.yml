@@ -56,6 +56,13 @@ services:
       - "8080:8080"
     networks:
       - project-net
+    environment:
+      - KC_DB=mysql
+      - KC_DB_URL=jdbc:mysql://192.168.1.26:13306/keycloak?useSSL=false&allowPublicKeyRetrieval=true
+      - KC_DB_USERNAME=root
+      - KC_DB_PASSWORD=root
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
       
 networks:
   project-net:
