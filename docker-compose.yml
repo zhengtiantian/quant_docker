@@ -32,7 +32,7 @@ services:
       start_period: 30s
 
   quant_data:
-    image: xiz001/quant_data:9c19689
+    image: xiz001/quant_data:1384414
     container_name: quant_data
     restart: always
     depends_on:
