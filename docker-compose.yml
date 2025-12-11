@@ -1,6 +1,6 @@
 services:
   quant_api:
-    image: xiz001/quant_api:8e95b92
+    image: xiz001/quant_api:2a2897d
     container_name: quant_api
     restart: always
     ports:
