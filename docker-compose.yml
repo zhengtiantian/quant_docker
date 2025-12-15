@@ -8,7 +8,7 @@ services:
     networks:
       - project-net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8081/api/health"]
+      test: [ "CMD", "curl", "-f", "http://localhost:8081/api/health" ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -25,7 +25,7 @@ services:
     networks:
       - project-net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: [ "CMD", "curl", "-f", "http://localhost" ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -42,12 +42,12 @@ services:
     volumes:
       - ./quant_data/scripts:/app/scripts
     healthcheck:
-      test: ["CMD", "python", "-c", "print('ok')"]
+      test: [ "CMD", "python", "-c", "print('ok')" ]
       interval: 60s
       timeout: 10s
       retries: 3
       start_period: 30s
-      
+
   keycloak:
     image: xiz001/quant_keycloak:407568b
     container_name: quant_keycloak
@@ -64,21 +64,37 @@ services:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
 
-  dify:
-    image: langgenius/dify:latest
-    container_name: quant_dify
+  dify-api:
+    image: langgenius/dify-api:latest
+    container_name: quant_dify_api
     ports:
-      - "8088:80"
+      - "8088:5001"
     environment:
       APP_NAME: "QuantAI Assistant"
-      MODEL_PROVIDER: "openai"
+      MODE: api
+      BASE_URL: "http://quant_dify_api:5001"
+      CONSOLE_URL: "http://localhost:8089"
+      WEB_URL: "http://localhost:8089"
       OPENAI_API_KEY: "sk-yourkey"
-      BASE_URL: "https://api.openai.com/v1"
+      BASE_OPENAI_API_URL: "https://api.openai.com/v1"
     volumes:
       - ./dify_data:/app/storage
     networks:
       - project-net
-      
+
+  dify-web:
+    image: langgenius/dify-web:latest
+    container_name: quant_dify_web
+    ports:
+      - "8089:3000"
+    environment:
+      API_URL: "http://localhost:8088"
+    depends_on:
+      - dify-api
+    networks:
+      - project-net
+
+
 networks:
   project-net:
     name: project-net
