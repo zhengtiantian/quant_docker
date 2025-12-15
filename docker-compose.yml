@@ -63,6 +63,21 @@ services:
       - KC_DB_PASSWORD=root
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
+
+  dify:
+    image: langgenius/dify:latest
+    container_name: quant_dify
+    ports:
+      - "8088:80"
+    environment:
+      APP_NAME: "QuantAI Assistant"
+      MODEL_PROVIDER: "openai"  # 仅示例，可改成 custom
+      OPENAI_API_KEY: "sk-yourkey"
+      BASE_URL: "https://api.openai.com/v1"
+    volumes:
+      - ./dify_data:/app/storage
+    networks:
+      - project-net
       
 networks:
   project-net:
