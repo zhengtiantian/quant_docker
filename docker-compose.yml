@@ -71,7 +71,7 @@ services:
       - "8088:80"
     environment:
       APP_NAME: "QuantAI Assistant"
-      MODEL_PROVIDER: "openai"  # 仅示例，可改成 custom
+      MODEL_PROVIDER: "openai"
       OPENAI_API_KEY: "sk-yourkey"
       BASE_URL: "https://api.openai.com/v1"
     volumes:
