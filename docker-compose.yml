@@ -63,38 +63,7 @@ services:
       - KC_DB_PASSWORD=root
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
-
-  dify-api:
-    image: langgenius/dify-api:latest
-    container_name: quant_dify_api
-    ports:
-      - "8088:5001"
-    environment:
-      APP_NAME: "QuantAI Assistant"
-      MODE: api
-      BASE_URL: "http://quant_dify_api:5001"
-      CONSOLE_URL: "http://localhost:8089"
-      WEB_URL: "http://localhost:8089"
-      OPENAI_API_KEY: "sk-yourkey"
-      BASE_OPENAI_API_URL: "https://api.openai.com/v1"
-    volumes:
-      - ./dify_data:/app/storage
-    networks:
-      - project-net
-
-  dify-web:
-    image: langgenius/dify-web:latest
-    container_name: quant_dify_web
-    ports:
-      - "8089:3000"
-    environment:
-      API_URL: "http://localhost:8088"
-    depends_on:
-      - dify-api
-    networks:
-      - project-net
-
-
+      
 networks:
   project-net:
     name: project-net
