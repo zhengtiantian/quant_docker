@@ -79,7 +79,7 @@ services:
     container_name: quant_keycloak
     restart: always
     ports:
-      - "18080:8080"
+      - "18082:8080"
     environment:
       - KC_DB=mysql
       - KC_DB_URL=jdbc:mysql://mysql8:3306/keycloak?useSSL=false&allowPublicKeyRetrieval=true
