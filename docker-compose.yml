@@ -238,9 +238,12 @@ services:
     ports:
       - "18000:8000"
     environment:
+      - LOCAL_MODEL_NAME=qwen2:1.5b-instruct-q4
       - OPENAI_API_KEY=你的Key
       - QUANT_API=http://quant_api:8081
       - DIFY_API=http://dify-api:5001
+    volumes:
+      - /data/ollama/models:/models  
     depends_on:
       - dify-api
       - quant_api
