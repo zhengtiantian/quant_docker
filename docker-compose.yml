@@ -236,7 +236,7 @@ services:
     container_name: langchain-agent
     restart: always
     ports:
-      - "18000:8000"
+      - "18000:8083"
     environment:
       - LOCAL_MODEL_NAME=qwen2:1.5b-instruct-q4
       - OPENAI_API_KEY=你的Key
