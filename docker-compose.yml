@@ -242,6 +242,7 @@ services:
       - OPENAI_API_KEY=你的Key
       - QUANT_API=http://quant_api:8081
       - DIFY_API=http://dify-api:5001
+      - OLLAMA_BASE_URL=http://192.168.1.26:11434
     volumes:
       - /data/ollama/models:/models  
     depends_on:
