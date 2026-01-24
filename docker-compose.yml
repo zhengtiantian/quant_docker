@@ -141,7 +141,7 @@ services:
       - project-net
     volumes:
       - ./quant_data/scripts:/app/scripts
-      - /mnt/data24t/docker-volumes/gdelt_cache:/app/cache_gdelt
+      - /mnt/data24t/docker-volumes/gdelt_cache:/mnt/data24t/docker-volumes/gdelt_cache
     healthcheck:
       test: ["CMD", "python", "-c", "print('ok')"]
       interval: 60s
