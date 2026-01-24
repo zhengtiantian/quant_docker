@@ -14,7 +14,7 @@ services:
     ports:
       - "23306:3306"
     volumes:
-      - /data/docker-volumes/mysql_data:/var/lib/mysql
+      - /mnt/data24t/docker-volumes/mysql_data:/var/lib/mysql
     networks:
       - project-net
 
@@ -28,7 +28,7 @@ services:
     ports:
       - "37018:27017"
     volumes:
-      - /data/docker-volumes/mongo_data:/data/db
+      - /mnt/data24t/docker-volumes/mongo_data:/data/db
     networks:
       - project-net
 
@@ -41,7 +41,7 @@ services:
       POSTGRES_PASSWORD: dify
       POSTGRES_DB: dify
     volumes:
-      - /data/docker-volumes/dify_postgres:/var/lib/postgresql/data
+      - /mnt/data24t/docker-volumes/dify_postgres:/var/lib/postgresql/data
     networks:
       - project-net
 
@@ -67,7 +67,7 @@ services:
     container_name: qdrant
     restart: always
     volumes:
-      - /data/docker-volumes/qdrant_data:/qdrant/storage
+      - /mnt/data24t/docker-volumes/qdrant_data:/qdrant/storage
     networks:
       - project-net
 
@@ -141,7 +141,7 @@ services:
       - project-net
     volumes:
       - ./quant_data/scripts:/app/scripts
-      - /data/docker-volumes/gdelt_cache:/app/cache_gdelt
+      - /mnt/data24t/docker-volumes/gdelt_cache:/app/cache_gdelt
     healthcheck:
       test: ["CMD", "python", "-c", "print('ok')"]
       interval: 60s
@@ -191,7 +191,7 @@ services:
       CONSOLE_CORS_ALLOW_ORIGINS: "*"
       WEB_API_CORS_ALLOW_ORIGINS: "*"
     volumes:
-      - /data/docker-volumes/dify_storage:/app/storage
+      - /mnt/data24t/docker-volumes/dify_storage:/app/storage
     depends_on:
       - postgres
       - redis
@@ -208,7 +208,7 @@ services:
       <<: *dify_env
       MODE: worker
     volumes:
-      - /data/docker-volumes/dify_storage:/app/storage
+      - /mnt/data24t/docker-volumes/dify_storage:/app/storage
     depends_on:
       - dify-api
     networks:
