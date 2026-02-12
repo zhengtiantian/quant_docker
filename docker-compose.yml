@@ -115,7 +115,7 @@ services:
       start_period: 30s
 
   quant_ui:
-    image: xiz001/quant_ui:ea196bb
+    image: xiz001/quant_ui:d75df9e
     container_name: quant_ui
     restart: always
     ports:
