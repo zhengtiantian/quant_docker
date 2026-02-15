@@ -232,7 +232,7 @@ services:
   # 5. LangChain Agent
   # ======================================================
   langchain-agent:
-    image: xiz001/langchain_agent:7f7ca1a
+    image: xiz001/langchain_agent:a9a61f3
     container_name: langchain-agent
     restart: always
     ports:
