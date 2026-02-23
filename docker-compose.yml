@@ -96,7 +96,7 @@ services:
   # 3. Quant 平台
   # ======================================================
   quant_api:
-    image: xiz001/quant_api:05753a5
+    image: xiz001/quant_api:5af2f4b
     container_name: quant_api
     restart: always
     ports:
