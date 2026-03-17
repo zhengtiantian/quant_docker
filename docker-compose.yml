@@ -85,6 +85,8 @@ services:
       - KC_DB_PASSWORD=root
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ../quant_keycloak/quant-realm.json:/opt/keycloak/data/import/quant-realm.json:ro
     depends_on:
       - mysql
     networks:
