@@ -73,7 +73,7 @@ services:
   # 2. Keycloak 身份认证
   # ======================================================
   keycloak:
-    image: xiz001/quant_keycloak:1bc11e2
+    image: xiz001/quant_keycloak:d471046
     container_name: quant_keycloak
     restart: always
     ports:
