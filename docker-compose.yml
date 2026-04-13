@@ -152,6 +152,55 @@ services:
       retries: 3
       start_period: 30s
 
+  quant_scheduler:
+    image: xiz001/quant_data:57702da
+    container_name: quant_scheduler
+    restart: always
+    command: ["python", "scheduler/task.py"]
+    environment:
+      - MONGO_URI=mongodb://root:root@mongo6:27017/quant_data?authSource=admin
+      - LOCAL_MONGO_URI=mongodb://root:root@mongo6:27017/quant_data?authSource=admin
+      - MYSQL_HOST=mysql8
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=workflow
+      - USE_MYSQL_BATCH_QUEUE=true
+      - RUN_STARTUP_INCREMENTAL_JOBS=true
+      - RUN_STARTUP_PRICE_HISTORY_BACKFILL=true
+      - RUN_STARTUP_GDELT_BACKFILL=true
+      - RUN_STARTUP_FEATURE_BUILD=false
+      - ENABLE_FINNHUB_JOB=true
+      - FINNHUB_JOB_MINUTES=30
+      - ENABLE_NEWSAPI_JOB=true
+      - NEWSAPI_JOB_MINUTES=60
+      - ENABLE_YAHOO_JOB=true
+      - YAHOO_JOB_MINUTES=60
+      - ENABLE_PRICE_HISTORY_BACKFILL_JOB=true
+      - PRICE_HISTORY_BACKFILL_JOB_TIME=06:30
+      - ENABLE_DAILY_GDELT_BACKFILL_JOB=true
+      - DAILY_GDELT_BACKFILL_JOB_TIME=05:15
+      - ENABLE_DAILY_PRICE_JOB=true
+      - DAILY_PRICE_JOB_TIME=07:30
+      - ENABLE_DAILY_FEATURE_JOB=true
+      - DAILY_FEATURE_JOB_TIME=08:00
+      - ENABLE_GDELT_BACKFILL_JOB=false
+    depends_on:
+      - mongodb
+      - mysql
+      - quant_api
+    networks:
+      - project-net
+    volumes:
+      - ../quant_data:/app
+      - /Volumes/data24T/docker-volumes/gdelt_cache:/Volumes/data24T/docker-volumes/gdelt_cache
+    healthcheck:
+      test: ["CMD", "python", "-c", "print('scheduler-ok')"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
   # ======================================================
   # 4. Dify 平台
   # ======================================================
