@@ -189,6 +189,8 @@ services:
       - DAILY_PRICE_JOB_TIME=07:30
       - ENABLE_DAILY_FEATURE_JOB=true
       - DAILY_FEATURE_JOB_TIME=08:00
+      - FEATURE_NEWS_COLLECTION=news_articles_company_matched_v1
+      - FEATURE_OUTPUT_COLLECTION=daily_symbol_features_company_matched_v1
       - ENABLE_GDELT_BACKFILL_JOB=false
     depends_on:
       - mongodb
