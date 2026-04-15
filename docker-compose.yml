@@ -132,7 +132,7 @@ services:
       start_period: 30s
 
   quant_data:
-    image: xiz001/quant_data:b8b79dc
+    image: xiz001/quant_data:c9cd9c3
     container_name: quant_data
     restart: always
     environment:
@@ -153,7 +153,7 @@ services:
       start_period: 30s
 
   quant_scheduler:
-    image: xiz001/quant_data:b8b79dc
+    image: xiz001/quant_data:c9cd9c3
     container_name: quant_scheduler
     restart: always
     command: ["python", "scheduler/task.py"]
