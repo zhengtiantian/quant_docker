@@ -161,7 +161,7 @@ services:
       - SLM_PROVIDER=lmstudio
       - SLM_API_MODE=openai
       - SLM_API_URL=http://host.docker.internal:1234/v1
-      - SLM_MODEL=qwen3-4b
+      - SLM_MODEL=qwen3.5-4b
       - SLM_MAX_CONCURRENCY=1
       - MONGO_URI=mongodb://root:root@mongo6:27017/quant_data?authSource=admin
       - LOCAL_MONGO_URI=mongodb://root:root@mongo6:27017/quant_data?authSource=admin
