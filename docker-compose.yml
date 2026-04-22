@@ -12,7 +12,7 @@ services:
     ports:
       - "23306:3306"
     volumes:
-      - /Volumes/data24T/docker-volumes/mysql_data:/var/lib/mysql
+      - /Volumes/Data24T/docker-volumes/mysql_data:/var/lib/mysql
     networks:
       - project-net
 
@@ -26,7 +26,7 @@ services:
     ports:
       - "37018:27017"
     volumes:
-      - /Volumes/data24T/docker-volumes/mongo_data:/data/db
+      - /Volumes/Data24T/docker-volumes/mongo_data:/data/db
     networks:
       - project-net
 
@@ -39,7 +39,7 @@ services:
       POSTGRES_PASSWORD: dify
       POSTGRES_DB: dify
     volumes:
-      - /Volumes/data24T/docker-volumes/dify_postgres:/var/lib/postgresql/data
+      - /Volumes/Data24T/docker-volumes/dify_postgres:/var/lib/postgresql/data
     networks:
       - project-net
 
@@ -65,7 +65,7 @@ services:
     container_name: qdrant
     restart: always
     volumes:
-      - /Volumes/data24T/docker-volumes/qdrant_data:/qdrant/storage
+      - /Volumes/Data24T/docker-volumes/qdrant_data:/qdrant/storage
     networks:
       - project-net
 
@@ -144,7 +144,7 @@ services:
       - project-net
     volumes:
       - ./quant_data/scripts:/app/scripts
-      - /Volumes/data24T/docker-volumes/gdelt_cache:/Volumes/data24T/docker-volumes/gdelt_cache
+      - /Volumes/Data24T/docker-volumes/gdelt_cache:/Volumes/Data24T/docker-volumes/gdelt_cache
     healthcheck:
       test: ["CMD", "python", "-c", "print('ok')"]
       interval: 60s
@@ -200,7 +200,7 @@ services:
       - project-net
     volumes:
       - ../quant_data:/app
-      - /Volumes/data24T/docker-volumes/gdelt_cache:/Volumes/data24T/docker-volumes/gdelt_cache
+      - /Volumes/Data24T/docker-volumes/gdelt_cache:/Volumes/Data24T/docker-volumes/gdelt_cache
     healthcheck:
       test: ["CMD", "python", "-c", "print('scheduler-ok')"]
       interval: 60s
@@ -250,7 +250,7 @@ services:
       CONSOLE_CORS_ALLOW_ORIGINS: "*"
       WEB_API_CORS_ALLOW_ORIGINS: "*"
     volumes:
-      - /Volumes/data24T/docker-volumes/dify_storage:/app/storage
+      - /Volumes/Data24T/docker-volumes/dify_storage:/app/storage
     depends_on:
       - postgres
       - redis
@@ -267,7 +267,7 @@ services:
       <<: *dify_env
       MODE: worker
     volumes:
-      - /Volumes/data24T/docker-volumes/dify_storage:/app/storage
+      - /Volumes/Data24T/docker-volumes/dify_storage:/app/storage
     depends_on:
       - dify-api
     networks:
