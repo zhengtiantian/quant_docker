@@ -12,7 +12,7 @@ services:
     ports:
       - "23306:3306"
     volumes:
-      - /Volumes/Data24T/docker-volumes/mysql_data:/var/lib/mysql
+      - /Users/xiz/docker-volumes/mysql_data:/var/lib/mysql
     networks:
       - project-net
 
@@ -26,7 +26,7 @@ services:
     ports:
       - "37018:27017"
     volumes:
-      - /Volumes/Data24T/docker-volumes/mongo_data:/data/db
+      - /Users/xiz/docker-volumes/mongo_data:/data/db
     networks:
       - project-net
 
